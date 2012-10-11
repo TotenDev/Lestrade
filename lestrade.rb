@@ -1,11 +1,13 @@
 require 'sinatra'
-require 'json'
+require './lib/iap_validator'
 
 use Rack::Auth::Basic do |username, password|
   [username, password] == [ENV['LESTRADE_USERNAME'], ENV['LESTRADE_PASSWORD']]
 end
 
-get '/' do
+post '/validate' do
   content_type :json
-  { status: "welcome" }.to_json
+  sandbox = !params[:sandbox].nil?
+  receipt = params[:receipt]
+  { status: Lestrade::IAPValidator.valid?( receipt, sandbox ) }.to_json
 end
