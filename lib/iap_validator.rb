@@ -10,7 +10,6 @@ module Lestrade
 
     base_uri PRODUCTION_URL
     headers 'Content-Type' => 'application/json'
-    format :json
 
     def self.valid?( receipt, sandbox = false )
       base_uri SANDBOX_URL if sandbox
@@ -21,7 +20,7 @@ module Lestrade
       dec = JSON.parse res.body
       return false if dec.nil?
 
-      dec[:status] == 0
+      dec['status'] == 0
     end
   end
 end
