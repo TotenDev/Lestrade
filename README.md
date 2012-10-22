@@ -41,20 +41,41 @@ Usage
 
 #### Validate Receipt
 
-    Route:  /validate
-    Method: POST
-    Body:
-      - sandbox: if present will use apple's sandbox url
-      - receipt: [Base64][](receipt bytes)
-    Status Codes:
-      - 200: OK
-      - 401: Unauthorized
+  - Route:  `/validate`
+  - Method: `POST`
+  - Body:   `receipt-data=(receipt bytes)`
+  - Success Code:
+    - 200:  `OK`
+  - Error Code:
+    - 401:  `Unauthorized`
 
 Example:
 
     curl --user sherlock:secret \
          --data "receipt=(base64 receipt)" \
          https://example.com/validate
+
+The response is a JSON containing the status.
+
+    {
+      "status": false
+    }
+
+#### Sandbox Validate Receipt
+
+  - Route:  `/sandbox/validate`
+  - Method: `POST`
+  - Body:   `receipt-data=(receipt bytes)`
+  - Success Code:
+    - 200:  `OK`
+  - Error Code:
+    - 401:  `Unauthorized`
+
+Example:
+
+    curl --user sherlock:secret \
+         --data "receipt=(base64 receipt)" \
+         https://example.com/sandbox/validate
 
 The response is a JSON containing the status.
 
