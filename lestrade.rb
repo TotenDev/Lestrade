@@ -10,12 +10,14 @@ end
 
 post '/validate' do
   content_type :json
-  validate( params[:'receipt-data'] ).to_json
+  data = JSON.parse( request.body.read )
+  validate( data['receipt-data'] ).to_json
 end
 
 post '/sandbox/validate' do
   content_type :json
-  validate( params[:'receipt-data'], true ).to_json
+  data = JSON.parse( request.body.read )
+  validate( data['receipt-data'], true ).to_json
 end
 
 def validate( receipt, sandbox=false )
