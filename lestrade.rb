@@ -1,6 +1,6 @@
 require 'sinatra'
-require './lib/iap_validator'
 require 'rack-ssl-enforcer'
+require_relative 'lib/iap_validator'
 
 use Rack::SslEnforcer
 
@@ -10,7 +10,14 @@ end
 
 post '/validate' do
   content_type :json
-  sandbox = !params[:sandbox].nil?
-  receipt = params[:receipt]
-  { status: Lestrade::IAPValidator.valid?( receipt, sandbox ) }.to_json
+  validate( params[:'receipt-data'] ).to_json
+end
+
+post '/sandbox/validate' do
+  content_type :json
+  validate( params[:'receipt-data'], true ).to_json
+end
+
+def validate( receipt, sandbox=false )
+  { status: Lestrade::IAPValidator.valid?( receipt, sandbox ) }
 end
