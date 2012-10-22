@@ -1,5 +1,8 @@
 require 'sinatra'
 require './lib/iap_validator'
+require 'rack-ssl-enforcer'
+
+use Rack::SslEnforcer
 
 use Rack::Auth::Basic do |username, password|
   [username, password] == [ENV['LESTRADE_USERNAME'], ENV['LESTRADE_PASSWORD']]
