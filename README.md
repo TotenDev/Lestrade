@@ -43,7 +43,7 @@ Usage
 
   - Route:  `/validate`
   - Method: `POST`
-  - Body:   `receipt-data=(receipt bytes)`
+  - Body:   `{ "receipt-data": "(receipt bytes)" }`
   - Success Code:
     - 200:  `OK`
   - Error Code:
@@ -52,7 +52,7 @@ Usage
 Example:
 
     curl --user sherlock:secret \
-         --data "receipt=(base64 receipt)" \
+         --data "{\"receipt-data\":\"(base64 receipt)\"}" \
          https://example.com/validate
 
 The response is a JSON containing the status.
@@ -65,7 +65,7 @@ The response is a JSON containing the status.
 
   - Route:  `/sandbox/validate`
   - Method: `POST`
-  - Body:   `receipt-data=(receipt bytes)`
+  - Body:   `{ "receipt-data": "(receipt bytes)" }`
   - Success Code:
     - 200:  `OK`
   - Error Code:
@@ -74,7 +74,7 @@ The response is a JSON containing the status.
 Example:
 
     curl --user sherlock:secret \
-         --data "receipt=(base64 receipt)" \
+         --data "{\"receipt-data\":\"(base64 receipt)\"}" \
          https://example.com/sandbox/validate
 
 The response is a JSON containing the status.
