@@ -21,6 +21,14 @@ helpers do
   end
 end
 
+not_found do
+  'Four, Oh Four.'
+end
+
+get '/' do
+  'Welcome to Inspector Lestrade!'
+end
+
 post '/validate' do
   content_type :json
   data = JSON.parse( request.body.read )
