@@ -5,3 +5,5 @@ gem 'sinatra'
 gem 'httparty'
 gem 'rack-ssl-enforcer'
 gem 'tdev_metrics'
+gem 'newrelic_rpm'
+

@@ -4,6 +4,8 @@ require_relative 'lib/iap_validator'
 require_relative 'lib/metrics'
 
 configure :production do
+  require 'newrelic_rpm'
+
   use Rack::SslEnforcer
 
   use Rack::Auth::Basic do |username, password|
