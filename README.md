@@ -1,5 +1,6 @@
 Lestrade
 ========
+[![Dependency Status](https://gemnasium.com/TotenDev/Lestrade.png)](https://gemnasium.com/TotenDev/Lestrade)
 
 Simple in-app purchase receipt validator.
 
