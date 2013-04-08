@@ -85,20 +85,6 @@ The response is a JSON containing the status.
     }
 
 
-TDMetrics
----------
-
-To send metrics to [TDMetrics][metrics] all you need to do is set this environment variables:
-
-    heroku config:add LESTRADE_SHOULD_SEND_METRICS=true
-    heroku config:add LESTRADE_METRICS_PROJECT_ID=1
-    heroku config:add LESTRADE_METRICS_USERNAME=watson
-    heroku config:add LESTRADE_METRICS_PASSWORD=secret
-    heroku config:add LESTRADE_METRICS_URL="http://example.com/"
-
-NOTE: On Non-Heroku environments, please check your webserver's manual for more information.
-
-
 Contributing
 ------------
 

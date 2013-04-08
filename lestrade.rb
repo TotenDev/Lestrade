@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'rack-ssl-enforcer'
 require_relative 'lib/iap_validator'
-require_relative 'lib/metrics'
 
 configure :production do
   require 'newrelic_rpm'
@@ -43,15 +42,3 @@ post '/sandbox/validate' do
   body validate( data['receipt-data'], true ).to_json
 end
 
-after do
-  Lestrade::Metrics.send_metric({
-    route:          request.path,
-    user_agent:     request.user_agent,
-    content_length: request.content_length,
-    request_method: request.request_method,
-    client_ip:      request.ip,
-    client_version: lib_version,
-    status:         response.status,
-    response:       response.body
-  })
-end
