@@ -2,6 +2,17 @@ require 'sinatra'
 require 'rack-ssl-enforcer'
 require_relative 'lib/iap_validator'
 
+if ENV['LESTRADE_SHOULD_USE_AIRBRAKE']
+  require 'airbrake'
+
+  Airbrake.configure do |config|
+    config.host = ENV['LESTRADE_AIRBRAKE_HOST']
+    config.api_key = ENV['LESTRADE_AIRBRAKE_API_KEY']
+  end
+
+  use Airbrake::Sinatra
+end
+
 configure :production do
   require 'newrelic_rpm'
 
