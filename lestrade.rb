@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'rack-ssl-enforcer'
 require_relative 'lib/iap_validator'
 
 if ENV['LESTRADE_SHOULD_USE_AIRBRAKE']
@@ -16,7 +15,10 @@ end
 configure :production do
   require 'newrelic_rpm'
 
-  use Rack::SslEnforcer
+  if ENV['LESTRADE_SHOULD_USE_SSL']
+    require 'rack-ssl-enforcer'
+    use Rack::SslEnforcer
+  end
 
   use Rack::Auth::Basic do |username, password|
     [username, password] == [ENV['LESTRADE_USERNAME'], ENV['LESTRADE_PASSWORD']]
