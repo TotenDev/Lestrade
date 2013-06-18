@@ -22,8 +22,10 @@ configure :production do
     use Rack::SslEnforcer
   end
 
-  use Rack::Auth::Basic do |username, password|
-    [username, password] == [ENV['LESTRADE_USERNAME'], ENV['LESTRADE_PASSWORD']]
+  if ENV['LESTRADE_SHOULD_USE_BASIC_AUTH']
+    use Rack::Auth::Basic do |username, password|
+      [username, password] == [ENV['LESTRADE_BASIC_AUTH_USERNAME'], ENV['LESTRADE_BASIC_AUTH_PASSWORD']]
+    end
   end
 end
 
