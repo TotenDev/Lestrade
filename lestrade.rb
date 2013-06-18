@@ -13,7 +13,9 @@ if ENV['LESTRADE_SHOULD_USE_AIRBRAKE']
 end
 
 configure :production do
-  require 'newrelic_rpm'
+  if ENV['LESTRADE_SHOULD_USE_NEW_RELIC']
+    require 'newrelic_rpm'
+  end
 
   if ENV['LESTRADE_SHOULD_USE_SSL']
     require 'rack-ssl-enforcer'
