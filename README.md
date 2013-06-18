@@ -1,6 +1,7 @@
 Lestrade
 ========
 [![Dependency Status](https://gemnasium.com/TotenDev/Lestrade.png)](https://gemnasium.com/TotenDev/Lestrade)
+[![Code Climate](https://codeclimate.com/github/TotenDev/Lestrade.png)](https://codeclimate.com/github/TotenDev/Lestrade)
 
 Simple in-app purchase receipt validator.
 
