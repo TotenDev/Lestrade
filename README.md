@@ -24,8 +24,9 @@ NOTE: This project has only been tested on [Heroku][heroku].
 
 2. Set the environment variables for the [HTTP Basic Authentication][http_ba]
 
-        heroku config:add LESTRADE_USERNAME=sherlock
-        heroku config:add LESTRADE_PASSWORD=secret
+        heroku config:add LESTRADE_SHOULD_USE_BASIC_AUTH=true
+        heroku config:add LESTRADE_BASIC_AUTH_USERNAME=sherlock
+        heroku config:add LESTRADE_BASIC_AUTH_PASSWORD=secret
 
 #### Non-Heroku:
 
